@@ -29,8 +29,8 @@ def load_font(name="font.idx", bmp_name="font.bmp"):
 
     return font_2
 
-def load_tile_table(filename, width, height):
-    image, image_rect = load_image(filename, -1)
+def load_tile_table(filename, width, height, colorkey = -1):
+    image, image_rect = load_image(filename, colorkey)
     image_width, image_height = image.get_size()
     tile_table = []
     for tile_x in range(0, image_width/width):

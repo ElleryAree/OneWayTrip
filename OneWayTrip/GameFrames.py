@@ -36,20 +36,25 @@ class WorldFrame(BasicFrame):
                     ["W", "S", "W", "S", "S", "W", "S", "S", "S", "W"],
                     ["W", "S", "S", "S", "W", "W", "S", "S", "S", "W"]]
 
+        add_x = (size[0] / (2 * 32) - (len(street1) / 2)) * 32
+        add_y = (size[1] / (2 * 32) - (len(street1[0]) / 2)) * 32
+
         dark_tile_set = DarkWorldTileSet()
         for i in range(len(street1)):
             for j in range(len(street1[i])):
                 tile_image = dark_tile_set.get_tile(street1, i, j)
-                tile = Tile(tile_image, (j, i), street1[i][j])
+                tile = Tile(tile_image, (j, i), (add_x, add_y), street1[i][j])
                 street_1_sprites.add(tile)
 
         hero_tile_set = HeroTileSet()
         hero_image, self.hero_position = hero_tile_set.get_sprite(self.hero_position)
-        hero_sprite = HeroTile(hero_image, (self.hero_position[0], self.hero_position[1]), hero_tile_set)
+        hero_sprite = HeroTile(hero_image, (self.hero_position[0], self.hero_position[1]), (add_x, add_y), hero_tile_set)
 
         self.locations = [street_1_sprites]
         self.location_grids = [street1]
         self.hero_sprite = pygame.sprite.GroupSingle(hero_sprite)
+
+        self.click_sprite = pygame.sprite.GroupSingle()
 
         self.current_street = 0
         self.tick = 0
@@ -60,16 +65,27 @@ class WorldFrame(BasicFrame):
         sprites = self.locations[self.current_street]
 
         sprites.update()
+
+        if len(self.click_sprite.sprites()) and not len(self.click_sprite.sprites()[0].tiles):
+            for sprite in self.click_sprite.sprites():
+                sprite.kill()
+        self.click_sprite.update()
+
         if self.tick >= 10:
             self.hero_sprite.update()
             self.tick = 0
 
         sprites.draw(self.surface)
+        self.click_sprite.draw(self.surface)
         self.hero_sprite.draw(self.surface)
 
     def checkMousePress(self, pointer):
         sprites = self.locations[self.current_street]
-        for clicked_menu in pygame.sprite.spritecollide(pointer, sprites, 0):
+        sprite_spritecollide = pygame.sprite.spritecollide(pointer, sprites, 0)
+        if len(sprite_spritecollide):
+            self.click_sprite.add(ExplodeTileSet(pygame.mouse.get_pos()))
+
+        for clicked_menu in sprite_spritecollide:
             if clicked_menu.key == "S":
                 print clicked_menu.position
                 self.hero_sprite.sprites()[0].route = self.__find_route(clicked_menu.position)

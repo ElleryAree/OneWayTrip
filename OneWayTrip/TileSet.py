@@ -71,19 +71,39 @@ class HeroTileSet:
 
         return tile, hero_position
 
+class ExplodeTileSet(pygame.sprite.Sprite):
+    def __init__(self, position):
+        pygame.sprite.Sprite.__init__(self) #call Sprite initializer
+        self.tile_width = 24
+        self.tile_height = 24
+        self.tiles = load_tile_table("Explode1.bmp", 24, 24)
+        self.position = position
+        self.__set_image()
+
+    def __set_image(self):
+        self.image = self.tiles.pop(0)[0]
+        self.rect = self.image.get_rect()
+        self.rect.centerx = self.position[0] - 8
+        self.rect.centery = self.position[1]
+
+    def update(self):
+        self.__set_image()
+
+
 
 class Tile(pygame.sprite.Sprite):
-    def __init__(self, image, position, key = None):
+    def __init__(self, image, position, additional, key = None):
         pygame.sprite.Sprite.__init__(self) #call Sprite initializer
         self.image = image
         self.position = position
         self.rect = image.get_rect()
-        self.rect.topleft = (position[0] * 32, position[1] * 32)
+        self.rect.topleft = (position[0] * 32 + additional[0], position[1] * 32 + additional[1])
         self.key = key
+        self.additional = additional
 
 class HeroTile(Tile):
-    def __init__(self, image, position, tile_set):
-        Tile.__init__(self, image, position)
+    def __init__(self, image, position, additional, tile_set):
+        Tile.__init__(self, image, position, additional)
         self.route = []
         self.step = 0
         self.tile_set = tile_set
@@ -93,9 +113,8 @@ class HeroTile(Tile):
             return
 
         route_part = self.route.pop(0)
-        print route_part
         tile, pos = self.tile_set.get_sprite([route_part[0][0], route_part[0][1], route_part[1], self.step])
         self.position = route_part[0]
-        self.rect.topleft = (self.position[0] * 32, self.position[1] * 32)
+        self.rect.topleft = (self.position[0] * 32 + self.additional[0], self.position[1] * 32 + self.additional[1])
         self.image = tile
         self.step = pos[3]
