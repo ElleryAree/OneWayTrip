@@ -1,4 +1,5 @@
 import pygame
+from pygame.surface import Surface
 from OneWayTrip.GameFrames import *
 from OneWayTrip.Utils import load_image
 
@@ -23,8 +24,12 @@ class MainFrame:
         self.background.fill((0, 0, 0))
 
         self.menu_sprites = pygame.sprite.RenderPlain()
+
         self.pointer = Pointer()
         self.pointer_group = pygame.sprite.GroupSingle(self.pointer)
+
+        self.pointerPoint = PointerPoint()
+#        self.pointer_point_group = pygame.sprite.GroupSingle(self.pointerPoint)
 
         item_x = (self.background.get_width()/2) - (70 * len(self.menu_list) / 2)
         item_y = self.background.get_height() - 65
@@ -54,12 +59,13 @@ class MainFrame:
 
         self.menu_sprites.update()
         self.pointer_group.update()
+        self.pointerPoint.update()
 
         self.menu_sprites.draw(self.screen)
         self.pointer_group.draw(self.screen)
 
     def checkMousePress(self):
-        for clicked_menu in pygame.sprite.spritecollide(self.pointer, self.menu_sprites, 0):
+        for clicked_menu in pygame.sprite.spritecollide(self.pointerPoint, self.menu_sprites, 0):
             if not self.menu_list[clicked_menu.name]:
                 continue
 
@@ -68,7 +74,7 @@ class MainFrame:
             clicked_menu.selected = True
             self.selected = clicked_menu.name
 
-        self.menu_list[self.selected].checkMousePress()
+        self.menu_list[self.selected].checkMousePress(self.pointerPoint)
 
 
 class Pointer(pygame.sprite.Sprite):
@@ -81,9 +87,18 @@ class Pointer(pygame.sprite.Sprite):
         "move the fist based on the mouse position"
         pos = pygame.mouse.get_pos()
         self.rect.midtop = pos
-#        if self.punching:
-#            self.rect.move_ip(5, 10)
 
+class PointerPoint(pygame.sprite.Sprite):
+    """moves a clenched fist on the screen, following the mouse"""
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self) #call Sprite initializer
+        self.image = Surface((1, 1))
+        self.rect = self.image.get_rect()
+
+    def update(self):
+        "move the fist based on the mouse position"
+        pos = pygame.mouse.get_pos()
+        self.rect.midtop = pos
 
 class MenuItem(pygame.sprite.Sprite):
     def __init__(self, name, text_value, position, font):
