@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<data>
+    <street name="str. A" id="1" x="0" y="0">
+        <house name="1" id="1"/>
+        <house name="1 A" id="2"/>
+    </street>
+    <street name="str. B" id="2" x="2" y="2">
+        <house name="1" id="3"/>
+        <house name="3" id="4"/>
+    </street>
+</data>
