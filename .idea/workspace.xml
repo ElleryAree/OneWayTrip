@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4d27d840-7cb7-4088-8972-9193bb5e400b" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OneWayTrip/Pathfinder.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OneWayTrip/TileSet.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/images.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/list_icon.jpeg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/map_icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/data/sleep_icon.jpeg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/GameFrames.py" afterPath="$PROJECT_DIR$/OneWayTrip/GameFrames.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/MainFrame.py" afterPath="$PROJECT_DIR$/OneWayTrip/MainFrame.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/Utils.py" afterPath="$PROJECT_DIR$/OneWayTrip/Utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py" afterPath="$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/Pathfinder.py" afterPath="$PROJECT_DIR$/OneWayTrip/Pathfinder.py" />
     </list>
     <ignored path="OneWayTrip.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -84,7 +75,7 @@
       <file leaf-file-name="Pathfinder.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OneWayTrip/Pathfinder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="21" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.57345974">
+            <state line="35" column="18" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.57345974">
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -441,13 +432,18 @@
       <created>1347495457115</created>
       <updated>1347495457115</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Map rendering.&#10;Pathfinding">
+      <created>1347576166891</created>
+      <updated>1347576166891</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -462,7 +458,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -505,7 +500,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit.&#10;Working menu." />
+    <option name="LAST_COMMIT_MESSAGE" value="Map rendering.&#10;Pathfinding" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -519,6 +514,7 @@
     <option name="SHOW_FILE_HISTORY_AS_TREE" value="false" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Initial commit.&#10;Working menu." />
+    <MESSAGE value="Map rendering.&#10;Pathfinding" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -626,7 +622,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OneWayTrip/Pathfinder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="21" selection-start="1010" selection-end="1010" vertical-scroll-proportion="0.57345974">
+        <state line="35" column="18" selection-start="1007" selection-end="1007" vertical-scroll-proportion="0.57345974">
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>

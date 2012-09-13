@@ -33,7 +33,7 @@ class PathFinder:
 
             actions = self.__get_actions(position, visited)
 
-        return (0, [])
+        return 0, []
 
 
 
