@@ -5,12 +5,18 @@ from OneWayTrip.Utils import load_image
 
 __author__ = 'elleryaree'
 
-class MainFrame:
-    def __init__(self, screen, days_left = 10):
+class MainFrame(object):
+    def __init__(self, screen, days_left=10):
         frame_size = (screen.get_width(), screen.get_height() - 64)
-        self.menu_list = {"World": WorldFrame(frame_size),
-                          "Map": MapFrame(frame_size),
-                          "Tree": TreeFrame(frame_size),
+        self.pointer = Pointer()
+        self.pointer_group = pygame.sprite.GroupSingle(self.pointer)
+
+        self.pointerPoint = PointerPoint()
+        #        self.pointer_point_group = pygame.sprite.GroupSingle(self.pointerPoint)
+
+        self.menu_list = {"World": WorldFrame(frame_size, self.pointerPoint, self.pointer),
+                          "Map": MapFrame(frame_size, self.pointerPoint, self.pointer),
+                          "Tree": TreeFrame(frame_size, self.pointerPoint, self.pointer),
                           "Score": None, "Days_left": None}
         self.selected = "World"
 
@@ -25,13 +31,7 @@ class MainFrame:
 
         self.menu_sprites = pygame.sprite.RenderPlain()
 
-        self.pointer = Pointer()
-        self.pointer_group = pygame.sprite.GroupSingle(self.pointer)
-
-        self.pointerPoint = PointerPoint()
-#        self.pointer_point_group = pygame.sprite.GroupSingle(self.pointerPoint)
-
-        item_x = (self.background.get_width()/2) - (70 * len(self.menu_list) / 2)
+        item_x = (self.background.get_width() / 2) - (70 * len(self.menu_list) / 2)
         item_y = self.background.get_height() - 65
         for menu_item in self.menu_list:
             if menu_item == "Score":
@@ -74,7 +74,7 @@ class MainFrame:
             clicked_menu.selected = True
             self.selected = clicked_menu.name
 
-        self.menu_list[self.selected].checkMousePress(self.pointerPoint)
+        self.menu_list[self.selected].checkMousePress()
 
 
 class Pointer(pygame.sprite.Sprite):

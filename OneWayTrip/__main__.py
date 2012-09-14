@@ -1,7 +1,7 @@
 import pygame
 from pygame.constants import  QUIT, KEYDOWN, K_ESCAPE, MOUSEBUTTONDOWN
 from OneWayTrip.MainFrame import MainFrame
-from OneWayTrip.Utils import load_image, load_font
+from OneWayTrip.Utils import *
 from OneWayTrip.bmpfont import BmpFont
 
 __author__ = 'elleryaree'
@@ -13,6 +13,9 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
     pygame.mouse.set_visible(0)
+
+    sound = load_sound("Theme.ogg")
+    sound.play()
 
     pygame.display.set_caption('Python Invaders')
     image, rect = load_image("invader_1.jpeg", -1)

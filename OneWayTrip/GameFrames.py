@@ -5,11 +5,20 @@ from OneWayTrip.map.Things import Door
 
 __author__ = 'elleryaree'
 
+LEFT = (-1, 0)
+RIGHT = (1, 0)
+UP = (0, -1)
+DOWN = (0, 1)
+
+OVERABLE = ["D", "I"]
+
 class BasicFrame(object):
-    def __init__(self, size):
+    def __init__(self, size, pointer, big_pointer):
         self.font = pygame.font.Font(None, 36)
         self.text = "Basic frame"
         self.surface = pygame.Surface(size)
+        self.pointer = pointer
+        self.big_pointer = big_pointer
 
     def update(self):
         text = self.font.render(self.text, 1, (250, 250, 250))
@@ -17,12 +26,17 @@ class BasicFrame(object):
 
         self.surface.blit(text, text_pos)
 
-    def checkMousePress(self, pointer):
+    def render_hint(self, hint):
+        text = self.font.render(hint, 1, (250, 250, 250))
+        text_pos = text.get_rect(centerx=self.surface.get_width() / 2, centery=self.surface.get_height() - 30)
+        self.surface.blit(text, text_pos)
+
+    def checkMousePress(self):
         pass
 
 class WorldFrame(BasicFrame):
-    def __init__(self, size):
-        BasicFrame.__init__(self, size)
+    def __init__(self, size, pointer, big_pointer):
+        BasicFrame.__init__(self, size, pointer, big_pointer)
         self.text = "World frame"
 
         self.hero_position = [0, 1, "L", 1]
@@ -59,9 +73,10 @@ class WorldFrame(BasicFrame):
                     ["S", "S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "W", "S", "S", "S"],
         ]
 
-        doors1 = {(5, 2): Door([0, 0, "U", 1], 1), (2, 5): Door([0, 0, "U", 1], 2)}
-        doors2 = {(9, 6): Door([5, 3, "D", 1], 0)}
-        doors3 = {(4, 4): Door([2, 6, "D", 1], 0)}
+        doors1 = {(5, 2): Door((5, 2), [0, 0, "U", 1], 1, [DOWN], "Door to second level"),
+                  (2, 5): Door((2, 5), [0, 0, "U", 1], 2, [DOWN], "To the streets")}
+        doors2 = {(9, 6): Door((9, 6), [5, 3, "D", 1], 0, [LEFT], "Door back to first level")}
+        doors3 = {(4, 4): Door((4, 4), [2, 6, "D", 1], 0, [DOWN], "Back in the dark")}
 
         self.location_grids = [WorldSet(size, street1, DarkWorldTileSet(), doors1),
                                WorldSet(size, street2, DarkWorldTileSet(), doors2),
@@ -80,9 +95,11 @@ class WorldFrame(BasicFrame):
         self.tick = 0
 
     def update(self):
+        self.surface.fill((0, 0, 0))
         self.tick += 1
 
-        sprites = self.location_grids[self.current_street].tiles()
+        street_ = self.location_grids[self.current_street]
+        sprites = street_.tiles()
 
         sprites.update()
 
@@ -99,10 +116,23 @@ class WorldFrame(BasicFrame):
         self.click_sprite.draw(self.surface)
         self.hero_sprite.draw(self.surface)
 
-    def checkMousePress(self, pointer):
+        desc = None
+        for overable in pygame.sprite.spritecollide(self.pointer, street_.mouse_overable, 0):
+            if overable.position in street_.doors:
+                desc = street_.doors[overable.position].description
+        self.render_hint(desc)
+
+
+    def __change_street(self, door):
+        self.current_street = door.map_index
+        current_set = self.location_grids[self.current_street]
+        self.hero_sprite.sprites()[0].position = door.hero_position
+        self.hero_sprite.sprites()[0].additional = (current_set.add_x, current_set.add_y)
+
+    def checkMousePress(self):
         current_set = self.location_grids[self.current_street]
         sprites = current_set.tiles()
-        sprite_spritecollide = pygame.sprite.spritecollide(pointer, sprites, 0)
+        sprite_spritecollide = pygame.sprite.spritecollide(self.pointer, sprites, 0)
         if len(sprite_spritecollide):
             self.click_sprite.add(ExplodeTileSet(pygame.mouse.get_pos()))
 
@@ -110,17 +140,14 @@ class WorldFrame(BasicFrame):
             if clicked_menu.key == "S":
                 self.hero_sprite.sprites()[0].route = self.__find_route(clicked_menu.position)
             if clicked_menu.key == "D":
-                adjacent_places = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+                door = current_set.doors[clicked_menu.position]
+
+                adjacent_places = door.action_positions
                 for place in adjacent_places:
                     x = clicked_menu.position[0] + place[0]
                     y = clicked_menu.position[1] + place[1]
                     if (x, y) == self.hero_sprite.sprites()[0].position:
-                        door = current_set.doors[clicked_menu.position]
-                        self.current_street = door.map_index
-                        current_set = self.location_grids[self.current_street]
-                        self.hero_sprite.sprites()[0].position = door.hero_position
-                        self.hero_sprite.sprites()[0].additional = (current_set.add_x, current_set.add_y)
-                        self.surface.fill((0, 0, 0))
+                        self.__change_street(door)
                         break
 
 
@@ -131,13 +158,13 @@ class WorldFrame(BasicFrame):
         return finder.find()[1]
 
 class MapFrame(BasicFrame):
-    def __init__(self, size):
-        BasicFrame.__init__(self, size)
+    def __init__(self, size, pointer, big_pointer):
+        BasicFrame.__init__(self, size, pointer, big_pointer)
         self.text = "Map frame"
 
 class TreeFrame(BasicFrame):
-    def __init__(self, size):
-        BasicFrame.__init__(self, size)
+    def __init__(self, size, pointer, big_pointer):
+        BasicFrame.__init__(self, size, pointer, big_pointer)
         self.text = "Tree frame"
 
 
@@ -149,6 +176,7 @@ class WorldSet(object):
         self.doors = doors
         self.add_x = (size[0] / (2 * 32) - (len(self.map) / 2)) * 32
         self.add_y = (size[1] / (2 * 32) - (len(self.map[0]) / 2)) * 32
+        self.mouse_overable = pygame.sprite.RenderPlain()
 
     def tiles(self):
         if self.__tiles:
@@ -160,4 +188,6 @@ class WorldSet(object):
                 tile_image = self.__tile_set.get_tile(self.map, i, j)
                 tile = Tile(tile_image, (j, i), (self.add_x, self.add_y), self.map[i][j])
                 self.__tiles.add(tile)
+                if self.map[i][j] in OVERABLE:
+                    self.mouse_overable.add(tile)
         return self.__tiles
