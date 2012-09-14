@@ -3,7 +3,7 @@ from OneWayTrip.Utils import load_tile_table
 
 __author__ = 'elleryaree'
 
-class BasicTileSet:
+class BasicTileSet(object):
     def _getKeyAndSurroundings(self, set, i, j):
         if (i - 1) < 0:
             key_up = "W"
@@ -36,16 +36,29 @@ class DarkWorldTileSet(BasicTileSet):
     def get_tile(self, set, i, j):
         key_up, key_down, key_left, key_right = self._getKeyAndSurroundings(set, i, j)
         key = set[i][j]
-        if key == "W":
+
+        if key == "S":
+            return self.tiles[4][10]
+        elif key == "D":
+            return self.tiles[11][6]
+        else:
             if key_up == "W":
                 return self.tiles[3][5]
             else:
                 return self.tiles[3][4]
 
-        if key == "S":
-            return self.tiles[4][10]
+class LightWorldTileSet(BasicTileSet):
+    def __init__(self):
+        self.tile_width = 32
+        self.tile_height = 32
+        self.tiles = load_tile_table("scr3scifi.jpeg", self.tile_width, self.tile_height)
 
-class HeroTileSet:
+    def get_tile(self, set, i, j):
+        return self.tiles[j][i]
+
+
+
+class HeroTileSet(object):
     def __init__(self):
         self.tile_width = 32
         self.tile_height = 32
@@ -71,6 +84,16 @@ class HeroTileSet:
 
         return tile, hero_position
 
+class Tile(pygame.sprite.Sprite):
+    def __init__(self, image, position, additional, key = None):
+        pygame.sprite.Sprite.__init__(self) #call Sprite initializer
+        self.image = image
+        self.position = position
+        self.rect = image.get_rect()
+        self.rect.topleft = (position[0] * 32 + additional[0], position[1] * 32 + additional[1])
+        self.key = key
+        self.additional = additional
+
 class ExplodeTileSet(pygame.sprite.Sprite):
     def __init__(self, position):
         pygame.sprite.Sprite.__init__(self) #call Sprite initializer
@@ -89,18 +112,6 @@ class ExplodeTileSet(pygame.sprite.Sprite):
     def update(self):
         self.__set_image()
 
-
-
-class Tile(pygame.sprite.Sprite):
-    def __init__(self, image, position, additional, key = None):
-        pygame.sprite.Sprite.__init__(self) #call Sprite initializer
-        self.image = image
-        self.position = position
-        self.rect = image.get_rect()
-        self.rect.topleft = (position[0] * 32 + additional[0], position[1] * 32 + additional[1])
-        self.key = key
-        self.additional = additional
-
 class HeroTile(Tile):
     def __init__(self, image, position, additional, tile_set):
         Tile.__init__(self, image, position, additional)
@@ -109,12 +120,10 @@ class HeroTile(Tile):
         self.tile_set = tile_set
 
     def update(self):
-        if not len(self.route):
-            return
-
-        route_part = self.route.pop(0)
-        tile, pos = self.tile_set.get_sprite([route_part[0][0], route_part[0][1], route_part[1], self.step])
-        self.position = route_part[0]
+        if len(self.route):
+            route_part = self.route.pop(0)
+            tile, pos = self.tile_set.get_sprite([route_part[0][0], route_part[0][1], route_part[1], self.step])
+            self.position = route_part[0]
+            self.image = tile
+            self.step = pos[3]
         self.rect.topleft = (self.position[0] * 32 + self.additional[0], self.position[1] * 32 + self.additional[1])
-        self.image = tile
-        self.step = pos[3]
