@@ -22,6 +22,27 @@ class BasicFrame(pygame.sprite.Sprite):
         self.pointer = pointer
         self.big_pointer = big_pointer
 
+        self.all_Items = {}
+        self.items1 = {(7, 5): Item(1, "First.png", (7, 5), [UP, DOWN, RIGHT, LEFT], "First item in the game", 10)}
+        self.items3 = {(11, 8): Item(1, "First.png", (11, 8), [UP, DOWN, RIGHT, LEFT], "Second item", 5),
+                  (16, 12): Item(2, "Blood.png", (16, 12), [LEFT], "Last", 30)}
+        for item in self.items1.values():
+            self.all_Items[item.id] = item
+        for item in self.items3.values():
+            self.all_Items[item.id] = item
+
+
+        self.all_chars = {}
+        self.chars1 = {(3, 6): Char([3, 6, "L", 1], [LEFT, UP], "First talkable hero", "kurosu")}
+        self.chars3 = {(9, 5): Char([9, 5, "D", 1], [DOWN], "First talkable hero", "miruru")}
+
+        for char in self.chars1.values():
+            self.all_chars[char.name] = char
+        for char in self.chars3.values():
+            self.all_chars[char.name] = char
+
+        self.dialog_texts = TalkParser().parse()
+
     def update(self):
         text = self.font.render(self.text, 1, (250, 250, 250))
         text_pos = text.get_rect(centerx=self.surface.get_width() / 2, centery=self.surface.get_height() / 2)
@@ -81,18 +102,9 @@ class WorldFrame(BasicFrame):
         doors2 = {(9, 6): Door((9, 6), [5, 3, "D", 1], 0, [LEFT], "back to first level")}
         doors3 = {(4, 4): Door((4, 4), [2, 6, "D", 1], 0, [DOWN], "back in the dark")}
 
-        items1 = {(7, 5): Item("First.png", (7, 5), [UP, DOWN, RIGHT, LEFT], "First item in the game", 10)}
-        items3 = {(11, 8): Item("First.png", (11, 8), [UP, DOWN, RIGHT, LEFT], "Second item", 5),
-                  (16, 12): Item("First.png", (16, 12), [LEFT], "Last", 30)}
-
-        chars1 = {(3, 6): Char([3, 6, "L", 1], [LEFT, UP], "First talkable hero", "kurosu")}
-        chars3 = {(9, 5): Char([9, 5, "D", 1], [DOWN], "First talkable hero", "miruru")}
-
-        self.dialog_texts = TalkParser().parse()
-
-        self.location_grids = [WorldSet(size, street1, DarkWorldTileSet(), doors1, items1, chars1),
+        self.location_grids = [WorldSet(size, street1, DarkWorldTileSet(), doors1, self.items1, self.chars1),
                                WorldSet(size, street2, DarkWorldTileSet(), doors2),
-                               WorldSet(size, street3, LightWorldTileSet(), doors3, items3, chars3)]
+                               WorldSet(size, street3, LightWorldTileSet(), doors3, self.items3, self.chars3)]
         self.current_street = 0
         add = (self.location_grids[self.current_street].add_x, self.location_grids[self.current_street].add_y)
 
@@ -198,7 +210,7 @@ class WorldFrame(BasicFrame):
                         if clicked_menu.key == "C":
                             self.dialog = DialogFrame(self.main,
                                 (500, 500), (self.surface.get_width() / 2 - 250, 150),
-                                self.pointer, self.big_pointer, thing, self.dialog_texts[thing.name])
+                                self.pointer, self.big_pointer, thing, self.dialog_texts[thing.name], self.all_Items)
                             self.dialog_group.add(self.dialog)
                         break
 
@@ -216,7 +228,7 @@ class WorldFrame(BasicFrame):
         item.kill()
         current_set.map[item.position[1]][item.position[0]] = "S"
 
-        self.main.add_item(item_info)
+        self.main.add_item(item_info.id, item_info.cost)
 
 class MapFrame(BasicFrame):
     def __init__(self, size, pointer, big_pointer):
@@ -226,7 +238,56 @@ class MapFrame(BasicFrame):
 class TreeFrame(BasicFrame):
     def __init__(self, size, pointer, big_pointer):
         BasicFrame.__init__(self, size, pointer, big_pointer)
-        self.text = "Tree frame"
+        self.chars = {}
+        for char in self.all_chars:
+            self.chars[char] = self.all_chars[char].get_image()
+
+    def update(self):
+        self.surface.fill((0, 0, 0))
+
+        i = 0
+        j = 1
+
+        text = self.font.render("Items to collect: ", 1, (250, 250, 250))
+        self.surface.blit(text, (40 * i + 20, 20))
+
+        for item in self.all_Items.values():
+            x = 40 * i + 20
+            y = 40 * j + 20
+
+            item_image = ITEMS.get_tile(item)
+            self.surface.blit(item_image, (x, y))
+
+            i += 1
+            if j > 2:
+                j += 1
+                i = 0
+
+        text = self.font.render("Vital characters: ", 1, (250, 250, 250))
+        self.surface.blit(text, (20, 40 * (j + 1) + 20))
+        j += 2
+        i = 0
+
+        for char_name in self.dialog_texts:
+            draw = False
+            char = self.dialog_texts[char_name]
+            for phrase in char.phrases.values():
+                if phrase.item is not None:
+                    draw = True
+                    break
+
+            if draw:
+                x = 40 * i + 20
+                y = 40 * j + 20
+
+                item_image = self.chars[char_name]
+                self.surface.blit(item_image, (x, y))
+
+                i += 1
+                if j > 2:
+                    j += 1
+                    i = 0
+
 
 class TimeUpFrame(BasicFrame):
     def __init__(self, main, size, pointer, big_pointer):
@@ -255,7 +316,7 @@ class TimeUpFrame(BasicFrame):
 
 
 class DialogFrame(BasicFrame):
-    def __init__(self, main, size, position, pointer, big_pointer, char, phrases):
+    def __init__(self, main, size, position, pointer, big_pointer, char, phrases, all_items):
         BasicFrame.__init__(self, size, pointer, big_pointer)
         self.__main = main
         self.__char = char
@@ -263,6 +324,7 @@ class DialogFrame(BasicFrame):
         self.__position = position
         self.__phrases = phrases
         self.__current_id = 0
+        self.__all_items = all_items
 
         self.__close_group = pygame.sprite.GroupSingle()
         self.__answer_group = pygame.sprite.RenderPlain()
@@ -293,6 +355,9 @@ class DialogFrame(BasicFrame):
 
         phrase = self.__phrases.phrases[self.__current_id]
 
+        if phrase.item is not None:
+            self.__main.add_item(phrase.item, phrase.cost)
+
         i = 1
 
         for text in phrase.text:
@@ -300,7 +365,7 @@ class DialogFrame(BasicFrame):
                 text_ = "%s: %s" % (self.__phrases.display_name, text)
             else:
                 text_ = text
-            text_r_1 = self.font.render(text_, 1, (250, 100, 100))
+            text_r_1 = self.font.render(text_, 1, (250, 250, 250))
             text_pos_r_1 = text_r_1.get_rect()
             text_pos_r_1.topleft = (20, (40 * i + 20))
             self.surface.blit(text_r_1, text_pos_r_1)
@@ -309,14 +374,27 @@ class DialogFrame(BasicFrame):
 
         self.__answer_group.empty()
         for answer in phrase.answers:
-            ans = self.font.render("> %s" % answer.text, 1, (250, 100, 100))
+            if answer.required is not None and not answer.required in self.__main.inventory:
+                enabled = False
+                color = (150, 150, 150)
+            else:
+                enabled = True
+                color = (150, 250, 150)
+            ans = self.font.render("> %s" % answer.text, 1, color)
             ans_pos = ans.get_rect()
-            ans_pos.topleft = (40, (40 * i + 20))
+            y = (40 * i + 20)
+            ans_pos.topleft = (40, y)
+            self.surface.blit(ans, ans_pos)
 
-            ans_sprite = AnswerSprite(ans, ans_pos, answer.next_id)
-            self.__answer_group.add(ans_sprite)
+            if enabled:
+                ans_sprite = AnswerSprite(ans, ans_pos, answer.next_id)
+                self.__answer_group.add(ans_sprite)
+            if answer.required:
+                item_image = ITEMS.get_tile(self.__all_items[answer.required])
+                self.surface.blit(item_image, (5, y))
+
             i += 1
-        self.__answer_group.draw(self.surface)
+
         self.__close_group.draw(self.surface)
 
     def update(self):

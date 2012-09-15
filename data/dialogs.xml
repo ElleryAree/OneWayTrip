@@ -2,12 +2,15 @@
 <data>
     <char name="kurosu" display_name="Kurosu, Ph.D.">
         <phrase id="0">
-            <text>Hi there</text>
+            <text>Who the Hell are you?</text>
             <answer next_id="1">
                 <text>Hello</text>
             </answer>
             <answer next_id="2">
                 <text>Fuck you</text>
+            </answer>
+            <answer next_id="3" required="2">
+                <text>What's this?</text>
             </answer>
         </phrase>
         <phrase id="1">
@@ -15,6 +18,12 @@
         </phrase>
         <phrase id="2">
             <text>You too, bye</text>
+        </phrase>
+        <phrase id="3">
+            <text>Blood.</text>
+            <text>Bring me one of those thing</text>
+            <text>on the floor and I'll give you</text>
+            <text>lot's of money.</text>
         </phrase>
     </char>
     <char name="miruru" display_name="Miruru">
@@ -26,6 +35,9 @@
             <answer next_id="2">
                 <text>Where's Kurosu?</text>
             </answer>
+            <answer next_id="3" required="2">
+                <text>What's this?</text>
+            </answer>
         </phrase>
         <phrase id="1">
             <text>Collect those things on the floor.</text>
@@ -34,6 +46,9 @@
         </phrase>
         <phrase id="2">
             <text>Hi is in the "Items" shop.</text>
+        </phrase>
+        <phrase id="3" item="3" cost="10">
+            <text>Holly shit!</text>
         </phrase>
     </char>
 </data>

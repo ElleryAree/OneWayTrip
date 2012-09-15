@@ -14,10 +14,11 @@ class Door(Thing):
         self.map_index = map_index
 
 class Item(Thing):
-    def __init__(self, name, position, action_positions, description, cost):
+    def __init__(self, id, name, position, action_positions, description, cost):
         super(Item, self).__init__(position, action_positions, description)
         self.name = name
         self.cost = cost
+        self.id = id
 
 class Char(Thing):
     def __init__(self, position, action_positions, description, name):

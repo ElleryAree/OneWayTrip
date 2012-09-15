@@ -79,9 +79,9 @@ class MainFrame(object):
 
         self.menu_list[self.selected].checkMousePress()
 
-    def add_item(self, item):
+    def add_item(self, item, cost):
         self.inventory.append(item)
-        self.score += item.cost
+        self.score += cost
         self.days_left -= 1
 
 
