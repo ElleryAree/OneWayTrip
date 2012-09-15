@@ -14,8 +14,8 @@ def main():
     screen = pygame.display.set_mode((800, 600))
     pygame.mouse.set_visible(0)
 
-    sound = load_sound("Theme.ogg")
-    sound.play()
+#    sound = load_sound("Theme.ogg")
+#    sound.play()
 
     pygame.display.set_caption('Python Invaders')
     image, rect = load_image("invader_1.jpeg", -1)
@@ -25,7 +25,10 @@ def main():
     clock = pygame.time.Clock()
 
     score = 0
-    days_left = 10
+    days_left = 2
+
+    mainFrame.score = score
+    mainFrame.days_left = days_left
 
     while True:
         clock.tick(60)
@@ -38,9 +41,6 @@ def main():
                 mainFrame.checkMousePress()
             elif event.type == KEYDOWN:
                 return 1
-
-        mainFrame.score = score
-        mainFrame.days_left = days_left
 
         mainFrame.update()
 

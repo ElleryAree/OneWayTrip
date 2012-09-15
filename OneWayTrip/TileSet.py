@@ -1,5 +1,5 @@
 import pygame
-from OneWayTrip.Utils import load_tile_table
+from OneWayTrip.Utils import load_tile_table, load_image
 
 __author__ = 'elleryaree'
 
@@ -27,25 +27,30 @@ class BasicTileSet(object):
 
         return key_up, key_down, key_left, key_right
 
+    def _floor(self, key):
+        return key in ["S", "I", "C"]
+
 class DarkWorldTileSet(BasicTileSet):
     def __init__(self):
         self.tile_width = 32
         self.tile_height = 32
         self.tiles = load_tile_table("scr4scifi.jpeg", self.tile_width, self.tile_height)
 
-    def get_tile(self, set, i, j):
+    def get_tile(self, i, j, set):
         key_up, key_down, key_left, key_right = self._getKeyAndSurroundings(set, i, j)
         key = set[i][j]
 
-        if key == "S":
-            return self.tiles[4][10]
+        if self._floor(key):
+            tile = self.tiles[4][10]
         elif key == "D":
-            return self.tiles[11][6]
+            tile = self.tiles[11][6]
         else:
             if key_up == "W":
-                return self.tiles[3][5]
+                tile = self.tiles[3][5]
             else:
-                return self.tiles[3][4]
+                tile = self.tiles[3][4]
+
+        return tile
 
 class LightWorldTileSet(BasicTileSet):
     def __init__(self):
@@ -53,9 +58,12 @@ class LightWorldTileSet(BasicTileSet):
         self.tile_height = 32
         self.tiles = load_tile_table("scr3scifi.jpeg", self.tile_width, self.tile_height)
 
-    def get_tile(self, set, i, j):
+    def get_tile(self, i, j, set):
         return self.tiles[j][i]
 
+class ItemsTileSet(BasicTileSet):
+    def get_tile(self, item):
+        return load_image(item.name, -1)[0]
 
 
 class HeroTileSet(object):

@@ -11,3 +11,9 @@ class Door(Thing):
         super(Door, self).__init__(position, action_positions, description)
         self.hero_position = hero_position
         self.map_index = map_index
+
+class Item(Thing):
+    def __init__(self, name, position, action_positions, description, cost):
+        super(Item, self).__init__(position, action_positions, description)
+        self.name = name
+        self.cost = cost

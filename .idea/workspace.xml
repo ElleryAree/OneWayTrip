@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d27d840-7cb7-4088-8972-9193bb5e400b" name="Default" comment="Doors here">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/AbyssTileE.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/Theme.ogg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/scr3scifi.jpeg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MANIFEST.in" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/OneWayTrip.py" />
+    <list default="true" id="4d27d840-7cb7-4088-8972-9193bb5e400b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/GameFrames.py" afterPath="$PROJECT_DIR$/OneWayTrip/GameFrames.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/MainFrame.py" afterPath="$PROJECT_DIR$/OneWayTrip/MainFrame.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/Utils.py" afterPath="$PROJECT_DIR$/OneWayTrip/Utils.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/TileSet.py" afterPath="$PROJECT_DIR$/OneWayTrip/TileSet.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/__main__.py" afterPath="$PROJECT_DIR$/OneWayTrip/__main__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/map/Things.py" afterPath="$PROJECT_DIR$/OneWayTrip/map/Things.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py" afterPath="$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py" />
     </list>
     <ignored path="OneWayTrip.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,7 +33,7 @@
       <file leaf-file-name="SpriteSlicer.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="16" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0">
+            <state line="13" column="22" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -46,7 +42,7 @@
       <file leaf-file-name="MainFrame.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OneWayTrip/MainFrame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="0" selection-start="4525" selection-end="4525" vertical-scroll-proportion="0.0">
+            <state line="29" column="82" selection-start="1081" selection-end="1143" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -54,22 +50,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameFrames.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GameFrames.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OneWayTrip/GameFrames.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="109" selection-start="953" selection-end="953" vertical-scroll-proportion="0.40449437">
+            <state line="209" column="104" selection-start="9663" selection-end="9663" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chimp.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///Library/Python/2.7/site-packages/pygame/examples/chimp.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="8" selection-start="2431" selection-end="2431" vertical-scroll-proportion="0.0">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -77,17 +64,19 @@
       <file leaf-file-name="Utils.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OneWayTrip/Utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="4" selection-start="1410" selection-end="1420" vertical-scroll-proportion="0.0">
+            <state line="31" column="4" selection-start="940" selection-end="940" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="__main__.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="__main__.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OneWayTrip/__main__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="30" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="18" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.26966292">
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -95,9 +84,9 @@
       <file leaf-file-name="TileSet.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OneWayTrip/TileSet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="0" selection-start="3421" selection-end="3421" vertical-scroll-proportion="0.0">
+            <state line="65" column="39" selection-start="1770" selection-end="1770" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#1595#2168#0" expanded="false" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -106,7 +95,7 @@
       <file leaf-file-name="Things.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OneWayTrip/map/Things.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="13" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0">
+            <state line="19" column="0" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -134,13 +123,13 @@
         <option value="$PROJECT_DIR$/data/font.idx" />
         <option value="$PROJECT_DIR$/OneWayTrip/Pathfinder.py" />
         <option value="/Library/Python/2.7/site-packages/pygame/__init__.py" />
-        <option value="$PROJECT_DIR$/OneWayTrip/TileSet.py" />
-        <option value="$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py" />
-        <option value="$PROJECT_DIR$/OneWayTrip/MainFrame.py" />
-        <option value="$PROJECT_DIR$/OneWayTrip/map/Things.py" />
         <option value="$PROJECT_DIR$/OneWayTrip/Utils.py" />
-        <option value="$PROJECT_DIR$/OneWayTrip/__main__.py" />
+        <option value="$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py" />
+        <option value="$PROJECT_DIR$/OneWayTrip/TileSet.py" />
+        <option value="$PROJECT_DIR$/OneWayTrip/map/Things.py" />
+        <option value="$PROJECT_DIR$/OneWayTrip/MainFrame.py" />
         <option value="$PROJECT_DIR$/OneWayTrip/GameFrames.py" />
+        <option value="$PROJECT_DIR$/OneWayTrip/__main__.py" />
       </list>
     </option>
   </component>
@@ -439,7 +428,11 @@
       <created>1347655229256</created>
       <updated>1347655229256</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Start of items,&#10;Music,&#10;Tooltips&#10;">
+      <created>1347664092402</created>
+      <updated>1347664092402</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -450,7 +443,8 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952926" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15235008" sideWeight="0.2168331" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15235008" sideWeight="0.6733238" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39942938" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -460,7 +454,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -503,7 +496,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Doors here" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start of items,&#10;Music,&#10;Tooltips&#10;" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -521,16 +514,19 @@
     <MESSAGE value="Very small refactoring" />
     <MESSAGE value="Map in the center of the screen.&#10;Explosions on mouse click." />
     <MESSAGE value="Doors here" />
+    <MESSAGE value="Start of items,&#10;Music,&#10;Tooltips&#10;" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/OneWayTrip/GameFrames.py</url>
+          <line>187</line>
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Invaders/src/Game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-6.5758295" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/OneWayTrip/bmpfont.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="119" column="22" selection-start="4129" selection-end="4129" vertical-scroll-proportion="0.0" />
@@ -557,13 +553,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="16" selection-start="460" selection-end="460" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="0" selection-start="54" selection-end="54" vertical-scroll-proportion="0.0" />
@@ -576,35 +565,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OneWayTrip/TileSet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="0" selection-start="3421" selection-end="3421" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#1595#2168#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Library/Caches/PyCharm20/python_stubs/596071422/pygame/surface.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="212" column="8" selection-start="6334" selection-end="6334" vertical-scroll-proportion="0.33333334">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OneWayTrip/map/Things.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="13" selection-start="208" selection-end="208" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/OneWayTrip/MainFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="0" selection-start="4525" selection-end="4525" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -617,21 +581,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/OneWayTrip/Utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="4" selection-start="1410" selection-end="1420" vertical-scroll-proportion="0.0">
+        <state line="31" column="4" selection-start="940" selection-end="940" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OneWayTrip/__main__.py">
+    <entry file="file://$PROJECT_DIR$/data/First.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OneWayTrip/TileSet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="30" selection-start="158" selection-end="158" vertical-scroll-proportion="0.0">
+        <state line="65" column="39" selection-start="1770" selection-end="1770" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OneWayTrip/map/Things.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="0" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="22" selection-start="366" selection-end="366" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OneWayTrip/MainFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="82" selection-start="1081" selection-end="1143" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OneWayTrip/GameFrames.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="109" selection-start="953" selection-end="953" vertical-scroll-proportion="0.40449437">
+        <state line="209" column="104" selection-start="9663" selection-end="9663" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OneWayTrip/__main__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="511" selection-end="511" vertical-scroll-proportion="0.26966292">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
