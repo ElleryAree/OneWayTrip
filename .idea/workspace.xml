@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d27d840-7cb7-4088-8972-9193bb5e400b" name="Default" comment="Charactes and dialogs">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/Blood.png" />
+    <list default="true" id="4d27d840-7cb7-4088-8972-9193bb5e400b" name="Default" comment="resources reset&#10;">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/Theme-3.ogg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/gg left.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/gg right.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/hobo1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/hobo3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/hobo4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/hobo5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/parc map 1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/parc map 2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/parc map 3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/parc map 4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/parc map 5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/robot.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sytz1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sytz2.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sytz3.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/sytz4.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/temple-1.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/temple.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/town map.png" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/AbyssTileE.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Blood.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/First.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/Theme.ogg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/fan.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/font.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/font.idx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/kurosu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/menuBackground.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/menuSelected.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/miruru.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/picturesInfo.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/pointer.bmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/scr3scifi.jpeg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/data/scr4scifi.jpeg" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/GameFrames.py" afterPath="$PROJECT_DIR$/OneWayTrip/GameFrames.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/MainFrame.py" afterPath="$PROJECT_DIR$/OneWayTrip/MainFrame.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/Talk.py" afterPath="$PROJECT_DIR$/OneWayTrip/Talk.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/Things.py" afterPath="$PROJECT_DIR$/OneWayTrip/Things.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/dialogs.xml" afterPath="$PROJECT_DIR$/data/dialogs.xml" />
     </list>
     <ignored path="OneWayTrip.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -111,6 +140,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="pixelart" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
@@ -462,12 +496,16 @@
       <created>1347719374330</created>
       <updated>1347719374330</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Tree of items to collect (no, actually, a tree)">
+      <created>1347725102001</created>
+      <updated>1347725102001</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -475,7 +513,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952926" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15235008" sideWeight="0.2168331" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15235008" sideWeight="0.6733238" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15235008" sideWeight="0.6733238" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39942938" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -526,7 +564,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Charactes and dialogs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tree of items to collect (no, actually, a tree)" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -547,6 +585,7 @@
     <MESSAGE value="Start of items,&#10;Music,&#10;Tooltips&#10;" />
     <MESSAGE value="Items done" />
     <MESSAGE value="Charactes and dialogs" />
+    <MESSAGE value="Tree of items to collect (no, actually, a tree)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -564,11 +603,6 @@
         <state line="79" column="8" selection-start="2431" selection-end="2431" vertical-scroll-proportion="0.0">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/First.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py">
