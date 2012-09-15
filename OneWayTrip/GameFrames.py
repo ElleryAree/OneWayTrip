@@ -1,7 +1,8 @@
 import pygame
 from OneWayTrip.Pathfinder import PathFinder
 from OneWayTrip.TileSet import *
-from OneWayTrip.map.Things import *
+from OneWayTrip.Things import *
+from OneWayTrip.Talk import *
 
 __author__ = 'elleryaree'
 
@@ -12,8 +13,9 @@ DOWN = (0, 1)
 
 ITEMS = ItemsTileSet()
 
-class BasicFrame(object):
+class BasicFrame(pygame.sprite.Sprite):
     def __init__(self, size, pointer, big_pointer):
+        pygame.sprite.Sprite.__init__(self) #call Sprite initializer
         self.font = pygame.font.Font(None, 36)
         self.text = "Basic frame"
         self.surface = pygame.Surface(size)
@@ -40,7 +42,7 @@ class WorldFrame(BasicFrame):
         self.text = "World frame"
         self.main = main
 
-        self.hero_position = [0, 1, "L", 1]
+        self.hero_position = [0, 1, "R", 1]
 
         street1 = [["W", "S", "S", "S", "W", "W", "S", "S", "S", "W"],
                    ["S", "S", "W", "S", "W", "W", "W", "W", "W", "W"],
@@ -48,7 +50,7 @@ class WorldFrame(BasicFrame):
                    ["W", "S", "S", "S", "S", "S", "S", "W", "W", "W"],
                     ["S", "S", "W", "S", "S", "W", "S", "S", "W", "W"],
                     ["W", "S", "D", "S", "S", "W", "S", "I", "S", "W"],
-                    ["W", "S", "S", "S", "W", "W", "S", "S", "S", "W"]]
+                    ["W", "S", "S", "C", "W", "W", "S", "S", "S", "W"]]
 
 
         street2 =  [["S", "S", "S", "S", "S", "S", "S", "S", "S", "W"],
@@ -64,7 +66,7 @@ class WorldFrame(BasicFrame):
                     ["S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
                     ["S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
                     ["S", "W", "W", "W", "D", "W", "W", "S", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
-                    ["S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "W", "S", "W", "W"],
+                    ["S", "S", "S", "S", "S", "S", "S", "S", "S", "C", "S", "S", "S", "W", "S", "W", "W"],
                     ["W", "S", "S", "S", "S", "S", "S", "S", "W", "S", "S", "S", "S", "W", "S", "W", "W"],
                     ["W", "S", "S", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "W", "S", "W", "W"],
                     ["S", "S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "I", "S", "S", "S", "W", "W"],
@@ -83,9 +85,14 @@ class WorldFrame(BasicFrame):
         items3 = {(11, 8): Item("First.png", (11, 8), [UP, DOWN, RIGHT, LEFT], "Second item", 5),
                   (16, 12): Item("First.png", (16, 12), [LEFT], "Last", 30)}
 
-        self.location_grids = [WorldSet(size, street1, DarkWorldTileSet(), doors1, items1),
+        chars1 = {(3, 6): Char([3, 6, "L", 1], [LEFT, UP], "First talkable hero", "kurosu")}
+        chars3 = {(9, 5): Char([9, 5, "D", 1], [DOWN], "First talkable hero", "miruru")}
+
+        self.dialog_texts = TalkParser().parse()
+
+        self.location_grids = [WorldSet(size, street1, DarkWorldTileSet(), doors1, items1, chars1),
                                WorldSet(size, street2, DarkWorldTileSet(), doors2),
-                               WorldSet(size, street3, LightWorldTileSet(), doors3, items3)]
+                               WorldSet(size, street3, LightWorldTileSet(), doors3, items3, chars3)]
         self.current_street = 0
         add = (self.location_grids[self.current_street].add_x, self.location_grids[self.current_street].add_y)
 
@@ -93,9 +100,11 @@ class WorldFrame(BasicFrame):
         hero_image, self.hero_position = hero_tile_set.get_sprite(self.hero_position)
         hero_sprite = HeroTile(hero_image, (self.hero_position[0], self.hero_position[1]), add, hero_tile_set)
 
+        self.dialog = None
 
         self.hero_sprite = pygame.sprite.GroupSingle(hero_sprite)
         self.click_sprite = pygame.sprite.GroupSingle()
+        self.dialog_group = pygame.sprite.GroupSingle()
 
         self.tick = 0
 
@@ -106,9 +115,11 @@ class WorldFrame(BasicFrame):
         street_ = self.location_grids[self.current_street]
         sprites = street_.tiles()
         items = street_.items_sprites
+        chars = street_.characters_sprites
 
         sprites.update()
         items.update()
+        chars.update()
 
         if len(self.click_sprite.sprites()) and not len(self.click_sprite.sprites()[0].tiles):
             for sprite in self.click_sprite.sprites():
@@ -121,9 +132,19 @@ class WorldFrame(BasicFrame):
 
         sprites.draw(self.surface)
         items.draw(self.surface)
+        chars.draw(self.surface)
 
         self.click_sprite.draw(self.surface)
         self.hero_sprite.draw(self.surface)
+
+        if self.dialog:
+            if self.dialog.validate(self.hero_sprite.sprites()[0].position):
+                self.dialog.update()
+                self.dialog_group.draw(self.surface)
+            else:
+                self.dialog.kill()
+                self.dialog = None
+
 
         desc = None
         for overable in pygame.sprite.spritecollide(self.pointer, street_.mouse_overable, 0):
@@ -139,6 +160,10 @@ class WorldFrame(BasicFrame):
         current_set = self.location_grids[self.current_street]
         sprites = current_set.tiles()
         self.click_sprite.add(ExplodeTileSet(pygame.mouse.get_pos()))
+
+        if len(pygame.sprite.spritecollide(self.pointer, self.dialog_group, 0)):
+            self.dialog.checkMousePress()
+            return
 
         for clicked_menu in pygame.sprite.spritecollide(self.pointer, sprites, 0):
             if clicked_menu.key == "S":
@@ -171,7 +196,10 @@ class WorldFrame(BasicFrame):
                         if clicked_menu.key == "I":
                             self.__take_item(clicked_menu, thing, current_set)
                         if clicked_menu.key == "C":
-                            pass
+                            self.dialog = DialogFrame(self.main,
+                                (500, 500), (self.surface.get_width() / 2 - 250, 150),
+                                self.pointer, self.big_pointer, thing, self.dialog_texts[thing.name])
+                            self.dialog_group.add(self.dialog)
                         break
 
     def __find_route(self, goal):
@@ -226,6 +254,87 @@ class TimeUpFrame(BasicFrame):
         self.surface.blit(text_r_4, text_pos_r_4)
 
 
+class DialogFrame(BasicFrame):
+    def __init__(self, main, size, position, pointer, big_pointer, char, phrases):
+        BasicFrame.__init__(self, size, pointer, big_pointer)
+        self.__main = main
+        self.__char = char
+        self.__needs_closing = False
+        self.__position = position
+        self.__phrases = phrases
+        self.__current_id = 0
+
+        self.__close_group = pygame.sprite.GroupSingle()
+        self.__answer_group = pygame.sprite.RenderPlain()
+
+        self.rect = pygame.Rect(position, size)
+        self.image = self.surface
+
+        text_r_close = self.font.render("Close", 1, (250, 100, 100))
+        text_pos_r_close = text_r_close.get_rect(centerx=self.surface.get_width() - 30, centery=10)
+        close_sprite = DialogTextSprite(text_r_close, text_pos_r_close)
+        self.__close_group.add(close_sprite)
+
+        self.redraw()
+
+    def checkMousePress(self):
+        self.__needs_closing = len(pygame.sprite.spritecollide(self.pointer, self.__close_group, 0, self.collideTest))
+
+        for chosen_ans in pygame.sprite.spritecollide(self.pointer, self.__answer_group, 0):
+            self.__current_id = chosen_ans.next_id
+            self.redraw()
+
+    def collideTest(self, rect1, rect2):
+        rect1.rect.topleft = (rect1.rect.topleft[0] - self.__position[0], rect1.rect.topleft[1] - self.__position[1])
+        return pygame.sprite.collide_rect(rect1, rect2)
+
+    def redraw(self):
+        self.surface.fill((100, 100, 100))
+
+        phrase = self.__phrases.phrases[self.__current_id]
+
+        i = 1
+
+        for text in phrase.text:
+            if i == 1:
+                text_ = "%s: %s" % (self.__phrases.display_name, text)
+            else:
+                text_ = text
+            text_r_1 = self.font.render(text_, 1, (250, 100, 100))
+            text_pos_r_1 = text_r_1.get_rect()
+            text_pos_r_1.topleft = (20, (40 * i + 20))
+            self.surface.blit(text_r_1, text_pos_r_1)
+            i += 1
+
+
+        self.__answer_group.empty()
+        for answer in phrase.answers:
+            ans = self.font.render("> %s" % answer.text, 1, (250, 100, 100))
+            ans_pos = ans.get_rect()
+            ans_pos.topleft = (40, (40 * i + 20))
+
+            ans_sprite = AnswerSprite(ans, ans_pos, answer.next_id)
+            self.__answer_group.add(ans_sprite)
+            i += 1
+        self.__answer_group.draw(self.surface)
+        self.__close_group.draw(self.surface)
+
+    def update(self):
+        pass
+
+    def validate(self, hero_pos):
+        if self.__needs_closing:
+            return False
+
+        adjacent_places = self.__char.action_positions
+        for place in adjacent_places:
+            x = self.__char.position[0] + place[0]
+            y = self.__char.position[1] + place[1]
+            if (x, y) == hero_pos:
+                return True
+
+        return False
+
 class WorldSet(object):
     def __init__(self, size, map, tile_set, doors, items = None, characters = None):
         self.map = map
@@ -259,7 +368,23 @@ class WorldSet(object):
                 if self.map[i][j] == "D":
                     self.mouse_overable.add(tile)
                 if self.map[i][j] in ["I", "C"]:
-                    item_tile = Tile(ITEMS.get_tile(self.items[(j, i)]), (j, i), (self.add_x, self.add_y), self.map[i][j])
+                    if self.map[i][j] == "I":
+                        item_image = ITEMS.get_tile(self.items[(j, i)])
+                    else:
+                        item_image = self.characters[(j, i)].get_image()
+                    item_tile = Tile(item_image, (j, i), (self.add_x, self.add_y), self.map[i][j])
                     self.items_sprites.add(item_tile)
                     self.mouse_overable.add(item_tile)
         return self.__tiles
+
+
+class DialogTextSprite(pygame.sprite.Sprite):
+    def __init__(self, text_r, text_r_pos):
+        pygame.sprite.Sprite.__init__(self) #call Sprite initializer
+        self.image = text_r
+        self.rect = text_r_pos
+
+class AnswerSprite(DialogTextSprite):
+    def __init__(self, text_r, text_r_pos, next_id):
+        DialogTextSprite.__init__(self, text_r, text_r_pos)
+        self.next_id = next_id

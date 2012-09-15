@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<data>
+    <char name="kurosu" display_name="Kurosu, Ph.D.">
+        <phrase id="0">
+            <text>Hi there</text>
+            <answer next_id="1">
+                <text>Hello</text>
+            </answer>
+            <answer next_id="2">
+                <text>Fuck you</text>
+            </answer>
+        </phrase>
+        <phrase id="1">
+            <text>Have a nice day, bye</text>
+        </phrase>
+        <phrase id="2">
+            <text>You too, bye</text>
+        </phrase>
+    </char>
+    <char name="miruru" display_name="Miruru">
+        <phrase id="0">
+            <text>What you want?</text>
+            <answer next_id="1">
+                <text>What should I do?</text>
+            </answer>
+            <answer next_id="2">
+                <text>Where's Kurosu?</text>
+            </answer>
+        </phrase>
+        <phrase id="1">
+            <text>Collect those things on the floor.</text>
+            <text>Get 3 and return to me.</text>
+            <text>I will show you how to get out.</text>
+        </phrase>
+        <phrase id="2">
+            <text>Hi is in the "Items" shop.</text>
+        </phrase>
+    </char>
+</data>

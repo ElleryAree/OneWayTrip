@@ -1,4 +1,5 @@
 import os
+import xml.etree.ElementTree as ET
 import pygame
 from pygame.compat import geterror
 from pygame.constants import RLEACCEL
@@ -53,3 +54,7 @@ def load_sound(name):
         print ('Cannot load sound: %s' % fullname)
         raise SystemExit(str(geterror()))
     return sound
+
+def load_xml(name):
+    fullname = os.path.join(data_dir, name)
+    return ET.parse(fullname)

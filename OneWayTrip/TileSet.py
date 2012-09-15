@@ -65,12 +65,11 @@ class ItemsTileSet(BasicTileSet):
     def get_tile(self, item):
         return load_image(item.name, -1)[0]
 
-
-class HeroTileSet(object):
-    def __init__(self):
+class CharacterTileSet(object):
+    def __init__(self, name):
         self.tile_width = 32
         self.tile_height = 32
-        self.tiles = load_tile_table("fan.png", 32, 32)
+        self.tiles = load_tile_table(name, 32, 32)
 
     def get_sprite(self, hero_position):
         if hero_position[2] == "L":
@@ -87,10 +86,14 @@ class HeroTileSet(object):
         tile = self.tiles[x][y]
 
         hero_position[3] += 1
-        if (hero_position[3] >= 3):
+        if hero_position[3] >= 3:
             hero_position[3] = 0
 
         return tile, hero_position
+
+class HeroTileSet(CharacterTileSet):
+    def __init__(self):
+        super(HeroTileSet, self).__init__("fan.png")
 
 class Tile(pygame.sprite.Sprite):
     def __init__(self, image, position, additional, key = None):

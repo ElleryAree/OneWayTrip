@@ -1,4 +1,5 @@
 __author__ = 'elleryaree'
+from OneWayTrip.TileSet import CharacterTileSet
 
 class Thing(object):
     def __init__(self, position, action_positions, description):
@@ -17,3 +18,13 @@ class Item(Thing):
         super(Item, self).__init__(position, action_positions, description)
         self.name = name
         self.cost = cost
+
+class Char(Thing):
+    def __init__(self, position, action_positions, description, name):
+        super(Char, self).__init__((position[0], position[1]), action_positions, description)
+        self.tile_set = CharacterTileSet("%s.png" % name)
+        self.char_position = position
+        self.name = name
+
+    def get_image(self):
+        return self.tile_set.get_sprite(self.char_position)[0]
