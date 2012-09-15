@@ -61,6 +61,16 @@ class LightWorldTileSet(BasicTileSet):
     def get_tile(self, i, j, set):
         return self.tiles[j][i]
 
+class LightWorldTileSet(BasicTileSet):
+    def __init__(self):
+        self.tile_width = 32
+        self.tile_height = 32
+        self.tiles = load_tile_table("park_map_1", self.tile_width, self.tile_height)
+
+    def get_tile(self, i, j, set):
+        return self.tiles[j][i]
+
+
 class ItemsTileSet(BasicTileSet):
     def get_tile(self, item):
         return load_image(item.name, -1)[0]

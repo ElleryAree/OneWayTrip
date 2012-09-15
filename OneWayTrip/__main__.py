@@ -17,7 +17,7 @@ def main():
 #    sound = load_sound("Theme.ogg")
 #    sound.play()
 
-    pygame.display.set_caption('Python Invaders')
+    pygame.display.set_caption('Last rocket')
     image, rect = load_image("invader_1.jpeg", -1)
     pygame.display.set_icon(image)
 
