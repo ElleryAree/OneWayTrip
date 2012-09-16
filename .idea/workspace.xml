@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d27d840-7cb7-4088-8972-9193bb5e400b" name="Default" comment="Charactes and dialogs">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/scr3scifi.jpeg" afterPath="$PROJECT_DIR$/data/scr3scifi.jpeg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/scr4scifi.jpeg" afterPath="$PROJECT_DIR$/data/scr4scifi.jpeg" />
+    <list default="true" id="4d27d840-7cb7-4088-8972-9193bb5e400b" name="Default" comment="All done.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/AbyssTileA5.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/Ficus.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/embrion.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/fan1.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/hayate.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/kaito.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/oburi.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/scr2scifi.jpeg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/suka.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/Explode1.bmp" afterPath="$PROJECT_DIR$/data/Explode1.bmp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/fan.png" afterPath="$PROJECT_DIR$/data/fan.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/GameFrames.py" afterPath="$PROJECT_DIR$/OneWayTrip/GameFrames.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/MainFrame.py" afterPath="$PROJECT_DIR$/OneWayTrip/MainFrame.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/Talk.py" afterPath="$PROJECT_DIR$/OneWayTrip/Talk.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/TileSet.py" afterPath="$PROJECT_DIR$/OneWayTrip/TileSet.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/__main__.py" afterPath="$PROJECT_DIR$/OneWayTrip/__main__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py" afterPath="$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.txt" afterPath="$PROJECT_DIR$/README.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/dialogs.xml" afterPath="$PROJECT_DIR$/data/dialogs.xml" />
     </list>
     <ignored path="OneWayTrip.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +39,19 @@
       <file leaf-file-name="MainFrame.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/OneWayTrip/MainFrame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="0" selection-start="2695" selection-end="2695" vertical-scroll-proportion="0.0">
+            <state line="22" column="58" selection-start="896" selection-end="896" vertical-scroll-proportion="-10.961538">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__main__.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/OneWayTrip/__main__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="29" selection-start="485" selection-end="485" vertical-scroll-proportion="0.5442177">
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,17 +60,6 @@
         <entry file="file://$PROJECT_DIR$/OneWayTrip/GameFrames.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="165" column="25" selection-start="9424" selection-end="9424" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__main__.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/OneWayTrip/__main__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="29" selection-start="485" selection-end="485" vertical-scroll-proportion="0.40136054">
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -154,11 +156,11 @@
         <option value="$PROJECT_DIR$/OneWayTrip/Things.py" />
         <option value="$PROJECT_DIR$/OneWayTrip/TileSet.py" />
         <option value="$PROJECT_DIR$/OneWayTrip/map/slice/SpriteSlicer.py" />
-        <option value="$PROJECT_DIR$/OneWayTrip/MainFrame.py" />
         <option value="$PROJECT_DIR$/OneWayTrip/Talk.py" />
         <option value="$PROJECT_DIR$/data/dialogs.xml" />
         <option value="$PROJECT_DIR$/OneWayTrip/GameFrames.py" />
         <option value="$PROJECT_DIR$/OneWayTrip/__main__.py" />
+        <option value="$PROJECT_DIR$/OneWayTrip/MainFrame.py" />
       </list>
     </option>
   </component>
@@ -528,19 +530,24 @@
       <created>1347719374330</created>
       <updated>1347719374330</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="All done.">
+      <created>1347753836407</created>
+      <updated>1347753836407</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292011" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15235008" sideWeight="0.2168331" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14921875" sideWeight="0.6749311" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14921875" sideWeight="0.6749311" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38567492" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -549,7 +556,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -592,7 +598,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Charactes and dialogs" />
+    <option name="LAST_COMMIT_MESSAGE" value="All done." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -613,6 +619,7 @@
     <MESSAGE value="Start of items,&#10;Music,&#10;Tooltips&#10;" />
     <MESSAGE value="Items done" />
     <MESSAGE value="Charactes and dialogs" />
+    <MESSAGE value="All done." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -719,13 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/OneWayTrip/MainFrame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="2695" selection-end="2695" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/dialogs.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="33" selection-start="2165" selection-end="2165" vertical-scroll-proportion="0.0">
@@ -742,9 +742,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/OneWayTrip/MainFrame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="58" selection-start="896" selection-end="896" vertical-scroll-proportion="-10.961538">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/OneWayTrip/__main__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="29" selection-start="485" selection-end="485" vertical-scroll-proportion="0.40136054">
+        <state line="16" column="29" selection-start="485" selection-end="485" vertical-scroll-proportion="0.5442177">
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
