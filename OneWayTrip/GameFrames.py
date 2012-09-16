@@ -23,20 +23,32 @@ class BasicFrame(pygame.sprite.Sprite):
         self.big_pointer = big_pointer
 
         self.all_Items = {}
-        self.items1 = {(7, 5): Item(1, "First.png", (7, 5), [UP, DOWN, RIGHT, LEFT], "First item in the game", 10)}
-        self.items3 = {(11, 8): Item(1, "First.png", (11, 8), [UP, DOWN, RIGHT, LEFT], "Second item", 5),
-                  (16, 12): Item(2, "Blood.png", (16, 12), [LEFT], "Last", 30)}
+        self.items1 = {(4, 1): Item(10, "First.png", (4, 1), [UP, DOWN, RIGHT, LEFT], "1 credit", 1)}
+        self.items2 = {(3, 0): Item(3, "Ficus.png", (3, 0), [UP, DOWN, RIGHT, LEFT], "Funny ficus", 10),
+                       (2, 8): Item(10, "First.png", (2, 8), [UP, DOWN, RIGHT, LEFT], "1 credit", 1),
+                       (4, 11): Item(10, "First.png", (4, 11), [UP, DOWN, RIGHT, LEFT], "1 credit", 1)}
+        self.items3 = {(11, 8): Item(10, "First.png", (11, 8), [UP, DOWN, RIGHT, LEFT], "1 credit", 1),
+                       (12, 4): Item(10, "First.png", (12, 4), [UP, DOWN, RIGHT, LEFT], "1 credit", 1),
+                        (16, 12): Item(10, "First.png", (16, 12), [LEFT], "Last", 1)}
         for item in self.items1.values():
+            self.all_Items[item.id] = item
+        for item in self.items2.values():
             self.all_Items[item.id] = item
         for item in self.items3.values():
             self.all_Items[item.id] = item
 
+        self.all_Items[4] = Item(4, "embrion.png", (16, 10), [UP, DOWN, RIGHT, LEFT], "Proof of nobless", 1)
+
 
         self.all_chars = {}
-        self.chars1 = {(3, 6): Char([3, 6, "L", 1], [LEFT, UP], "First talkable hero", "kurosu")}
-        self.chars3 = {(9, 5): Char([9, 5, "D", 1], [DOWN], "First talkable hero", "miruru")}
+        self.chars1 = {(3, 12): Char([3, 12, "U", 1], [UP], "Rocket ticket seller", "kurosu"),
+                       (16, 10): Char([16, 10, "L", 1], [LEFT, UP], "Mad scientist", "suka")}
+        self.chars2 = {(5, 6): Char([5, 6, "R", 1], [DOWN, LEFT], "A noble man", "kaito")}
+        self.chars3 = {(9, 5): Char([9, 5, "D", 1], [DOWN, LEFT, UP, RIGHT], "Noble zombie", "miruru")}
 
         for char in self.chars1.values():
+            self.all_chars[char.name] = char
+        for char in self.chars2.values():
             self.all_chars[char.name] = char
         for char in self.chars3.values():
             self.all_chars[char.name] = char
@@ -63,47 +75,60 @@ class WorldFrame(BasicFrame):
         self.text = "World frame"
         self.main = main
 
-        self.hero_position = [0, 1, "R", 1]
+        self.hero_position = [1, 0, "D", 1]
 
-        street1 = [["W", "S", "S", "S", "W", "W", "S", "S", "S", "W"],
-                   ["S", "S", "W", "S", "W", "W", "W", "W", "W", "W"],
-                   ["W", "S", "W", "S", "W", "D", "W", "S", "S", "W"],
-                   ["W", "S", "S", "S", "S", "S", "S", "W", "W", "W"],
-                    ["S", "S", "W", "S", "S", "W", "S", "S", "W", "W"],
-                    ["W", "S", "D", "S", "S", "W", "S", "I", "S", "W"],
-                    ["W", "S", "S", "C", "W", "W", "S", "S", "S", "W"]]
+        street1 =  [["W", "S", "W", "S", "S", "S", "S", "W", "W", "W", "W", "W", "W", "S", "S", "D", "S"],
+                    ["W", "S", "W", "S", "I", "S", "S", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W"],
+                    ["W", "S", "S", "S", "S", "S", "S", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W"],
+                    ["W", "S", "S", "S", "S", "S", "S", "W", "D", "W", "W", "W", "W", "W", "W", "W", "W"],
+                    ["W", "W", "W", "W", "W", "S", "W", "W", "S", "W", "W", "W", "W", "W", "W", "W", "W"],
+                    ["W", "W", "W", "W", "W", "S", "W", "W", "S", "W", "W", "W", "W", "W", "W", "W", "W"],
+                    ["W", "S", "W", "S", "S", "S", "S", "S", "S", "S", "W", "D", "W", "W", "W", "W", "W"],
+                    ["W", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S"],
+                    ["W", "W", "W", "S", "S", "W", "W", "W", "S", "S", "W", "W", "W", "W", "W", "W", "W"],
+                    ["W", "S", "S", "S", "S", "S", "W", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S"],
+                    ["W", "S", "S", "S", "S", "S", "W", "S", "S", "S", "W", "W", "W", "W", "W", "S", "C"],
+                    ["W", "S", "S", "S", "S", "S", "S", "S", "S", "W", "W", "W", "W", "W", "W", "W", "W"],
+                    ["W", "S", "W", "C", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W"]]
 
 
-        street2 =  [["S", "S", "S", "S", "S", "S", "S", "S", "S", "W"],
-                    ["W", "S", "W", "W", "W", "W", "W", "W", "S", "W"],
-                    ["W", "S", "W", "S", "S", "S", "W", "W", "S", "W"],
-                    ["W", "S", "W", "S", "W", "S", "W", "W", "W", "W"],
-                    ["W", "S", "W", "S", "W", "S", "S", "S", "S", "W"],
-                    ["W", "S", "W", "S", "W", "S", "S", "W", "S", "W"],
-                    ["W", "S", "S", "S", "W", "S", "S", "W", "S", "D"]]
+        street2 =  [["W", "S", "S", "I", "S", "S", "W", "W", "W", "W", "W", "W", "W", "W", "S", "W", "W"],
+                    ["W", "S", "W", "S", "S", "S", "W", "W", "W", "W", "W", "W", "W", "W", "S", "W", "W"],
+                    ["W", "S", "W", "S", "S", "S", "W", "W", "W", "W", "W", "W", "W", "S", "S", "W", "W"],
+                    ["W", "S", "S", "S", "S", "S", "W", "W", "W", "W", "W", "W", "W", "S", "S", "W", "W"],
+                    ["W", "W", "W", "S", "W", "W", "W", "W", "W", "W", "W", "W", "W", "S", "S", "W", "W"],
+                    ["W", "W", "W", "S", "W", "W", "W", "W", "W", "W", "W", "W", "W", "S", "W", "W", "W"],
+                    ["W", "S", "S", "S", "S", "C", "W", "W", "W", "W", "W", "W", "W", "S", "W", "W", "W"],
+                    ["W", "S", "S", "S", "S", "S", "W", "W", "W", "W", "W", "W", "W", "S", "W", "W", "W"],
+                    ["W", "S", "I", "S", "S", "S", "W", "W", "W", "W", "W", "W", "W", "S", "W", "W", "W"],
+                    ["W", "S", "S", "S", "S", "S", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W"],
+                    ["W", "S", "S", "S", "S", "S", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W", "W"],
+                    ["W", "S", "S", "S", "I", "S", "W", "W", "W", "D", "W", "W", "W", "D", "W", "W", "W"],
+                    ["W", "S", "W", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S"]]
 
         street3 =  [["S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "W", "S", "W", "W"],
                     ["S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
                     ["S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
                     ["S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
-                    ["S", "W", "W", "W", "D", "W", "W", "S", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
+                    ["S", "W", "W", "W", "D", "W", "W", "S", "S", "S", "S", "S", "I", "S", "S", "W", "W"],
                     ["S", "S", "S", "S", "S", "S", "S", "S", "S", "C", "S", "S", "S", "W", "S", "W", "W"],
-                    ["W", "S", "S", "S", "S", "S", "S", "S", "W", "S", "S", "S", "S", "W", "S", "W", "W"],
+                    ["W", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "S", "W", "S", "W", "W"],
                     ["W", "S", "S", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "W", "S", "W", "W"],
                     ["S", "S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "I", "S", "S", "S", "W", "W"],
                     ["S", "S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
                     ["S", "S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
                     ["S", "S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "S", "S", "W", "W"],
-                    ["S", "S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "W", "S", "S", "I"],
-        ]
+                    ["S", "S", "W", "W", "W", "W", "W", "W", "S", "S", "S", "S", "S", "W", "S", "S", "I"]]
 
-        doors1 = {(5, 2): Door((5, 2), [0, 0, "U", 1], 1, [DOWN], "to second level"),
-                  (2, 5): Door((2, 5), [0, 0, "U", 1], 2, [DOWN], "to the streets")}
-        doors2 = {(9, 6): Door((9, 6), [5, 3, "D", 1], 0, [LEFT], "back to first level")}
-        doors3 = {(4, 4): Door((4, 4), [2, 6, "D", 1], 0, [DOWN], "back in the dark")}
+        doors1 = {(8, 3): Door((8, 3), [13, 12, "D", 1], 1, [DOWN], "garden"),
+                  (11, 6): Door((11, 6), [13, 0, "L", 1], 0, [DOWN], "somewhere"),
+                  (15, 0): Door((15, 0), [11, 7, "D", 1], 0, [LEFT], "sewers")}
+        doors2 = {(13, 11): Door((9, 6), [8, 4, "D", 1], 0, [DOWN], "near the rocket"),
+                  (9, 11): Door((9, 11), [4, 5, "D", 1], 2, [DOWN], "to the road")}
+        doors3 = {(4, 4): Door((4, 4), [13, 0, "D", 1], 0, [DOWN], "near the rocket")}
 
         self.location_grids = [WorldSet(size, street1, DarkWorldTileSet(), doors1, self.items1, self.chars1),
-                               WorldSet(size, street2, DarkWorldTileSet(), doors2),
+                               WorldSet(size, street2, GreenWorldTileSet(), doors2, self.items2, self.chars2),
                                WorldSet(size, street3, LightWorldTileSet(), doors3, self.items3, self.chars3)]
         self.current_street = 0
         add = (self.location_grids[self.current_street].add_x, self.location_grids[self.current_street].add_y)
@@ -138,7 +163,7 @@ class WorldFrame(BasicFrame):
                 sprite.kill()
         self.click_sprite.update()
 
-        if self.tick >= 10:
+        if self.tick >= 4:
             self.hero_sprite.update()
             self.tick = 0
 
@@ -183,13 +208,20 @@ class WorldFrame(BasicFrame):
             if clicked_menu.key == "D":
                 door = current_set.doors[clicked_menu.position]
 
+                door_near = False
                 adjacent_places = door.action_positions
+                x = 0
+                y = 0
                 for place in adjacent_places:
                     x = clicked_menu.position[0] + place[0]
                     y = clicked_menu.position[1] + place[1]
                     if (x, y) == self.hero_sprite.sprites()[0].position:
                         self.__change_street(door)
+                        door_near = True
                         break
+                if not door_near:
+                    self.hero_sprite.sprites()[0].route = self.__find_route((x, y))
+
 
         for clicked_menu in pygame.sprite.spritecollide(self.pointer, current_set.items_sprites, 0):
             if clicked_menu.key in ["I", "C"]:
@@ -200,19 +232,26 @@ class WorldFrame(BasicFrame):
                 else:
                     continue
 
+                thing_near = False
                 adjacent_places = thing.action_positions
+                x = 0
+                y = 0
                 for place in adjacent_places:
                     x = clicked_menu.position[0] + place[0]
                     y = clicked_menu.position[1] + place[1]
-                    if (x, y) == self.hero_sprite.sprites()[0].position:
+                    if (x, y) == (self.hero_sprite.sprites()[0].position[0], self.hero_sprite.sprites()[0].position[1]):
                         if clicked_menu.key == "I":
                             self.__take_item(clicked_menu, thing, current_set)
                         if clicked_menu.key == "C":
                             self.dialog = DialogFrame(self.main,
-                                (500, 500), (self.surface.get_width() / 2 - 250, 150),
-                                self.pointer, self.big_pointer, thing, self.dialog_texts[thing.name], self.all_Items)
+                                (500, 500), (self.surface.get_width() / 2 - 250, 0),
+                                self.pointer, self.big_pointer, thing, self.dialog_texts[thing.name], self.all_Items, self.all_chars)
                             self.dialog_group.add(self.dialog)
+
+                        thing_near = True
                         break
+                if not thing_near:
+                    self.hero_sprite.sprites()[0].route = self.__find_route((x, y))
 
     def __find_route(self, goal):
         finder = PathFinder(self.location_grids[self.current_street].map, self.hero_sprite.sprites()[0].position, goal)
@@ -316,7 +355,7 @@ class TimeUpFrame(BasicFrame):
 
 
 class DialogFrame(BasicFrame):
-    def __init__(self, main, size, position, pointer, big_pointer, char, phrases, all_items):
+    def __init__(self, main, size, position, pointer, big_pointer, char, phrases, all_items, all_chars):
         BasicFrame.__init__(self, size, pointer, big_pointer)
         self.__main = main
         self.__char = char
@@ -325,6 +364,7 @@ class DialogFrame(BasicFrame):
         self.__phrases = phrases
         self.__current_id = 0
         self.__all_items = all_items
+        self.__all_chars = all_chars
 
         self.__close_group = pygame.sprite.GroupSingle()
         self.__answer_group = pygame.sprite.RenderPlain()
@@ -336,6 +376,14 @@ class DialogFrame(BasicFrame):
         text_pos_r_close = text_r_close.get_rect(centerx=self.surface.get_width() - 30, centery=10)
         close_sprite = DialogTextSprite(text_r_close, text_pos_r_close)
         self.__close_group.add(close_sprite)
+
+        tile_set = RandomTileSet()
+        self.background = pygame.sprite.RenderPlain()
+        for i in range(size[1] / 32):
+            for j in range(size[0] / 32):
+                tile_image = tile_set.get_tile()
+                tile = Tile(tile_image, (j, i), (0, 0))
+                self.background.add(tile)
 
         self.redraw()
 
@@ -350,8 +398,17 @@ class DialogFrame(BasicFrame):
         rect1.rect.topleft = (rect1.rect.topleft[0] - self.__position[0], rect1.rect.topleft[1] - self.__position[1])
         return pygame.sprite.collide_rect(rect1, rect2)
 
+    def __get_image_from_chars(self, answer):
+        for char_name in self.dialog_texts:
+            char = self.dialog_texts[char_name]
+            for phrase in char.phrases.values():
+                if phrase.item == answer.required:
+                    return self.__all_chars[char_name].get_image()
+        return None
+
     def redraw(self):
-        self.surface.fill((100, 100, 100))
+        self.surface.fill((0, 0, 0))
+        self.background.draw(self.surface)
 
         phrase = self.__phrases.phrases[self.__current_id]
 
@@ -374,12 +431,20 @@ class DialogFrame(BasicFrame):
 
         self.__answer_group.empty()
         for answer in phrase.answers:
-            if answer.required is not None and not answer.required in self.__main.inventory:
-                enabled = False
-                color = (150, 150, 150)
-            else:
+            cnt = 0
+            if answer.count is not None and answer.required is not None:
+                for itm in self.__main.inventory:
+                    if itm == answer.required:
+                        cnt += 1
+
+            if answer.required is None or (answer.required in self.__main.inventory and
+                                           (answer.count is None or answer.count == cnt)):
                 enabled = True
                 color = (150, 250, 150)
+            else:
+                enabled = False
+                color = (150, 150, 150)
+
             ans = self.font.render("> %s" % answer.text, 1, color)
             ans_pos = ans.get_rect()
             y = (40 * i + 20)
@@ -390,8 +455,13 @@ class DialogFrame(BasicFrame):
                 ans_sprite = AnswerSprite(ans, ans_pos, answer.next_id)
                 self.__answer_group.add(ans_sprite)
             if answer.required:
-                item_image = ITEMS.get_tile(self.__all_items[answer.required])
-                self.surface.blit(item_image, (5, y))
+                if answer.required in self.__all_items:
+                    item_image = ITEMS.get_tile(self.__all_items[answer.required])
+                else:
+                    item_image = self.__get_image_from_chars(answer)
+
+                if item_image:
+                    self.surface.blit(item_image, (5, y))
 
             i += 1
 
@@ -419,8 +489,8 @@ class WorldSet(object):
         self.__tiles = None
         self.__tile_set = tile_set
         self.doors = doors
-        self.add_x = (size[0] / (2 * 32) - (len(self.map) / 2)) * 32
-        self.add_y = (size[1] / (2 * 32) - (len(self.map[0]) / 2)) * 32
+        self.add_x = 10
+        self.add_y = 10
 
         self.mouse_overable = pygame.sprite.RenderPlain()
         self.items_sprites = pygame.sprite.RenderPlain()
@@ -440,7 +510,7 @@ class WorldSet(object):
         self.__tiles = pygame.sprite.RenderPlain()
         for i in range(len(self.map)):
             for j in range(len(self.map[i])):
-                tile_image = self.__tile_set.get_tile(i, j, self.map)
+                tile_image = self.__tile_set.get_tile(i, j)
                 tile = Tile(tile_image, (j, i), (self.add_x, self.add_y), self.map[i][j])
                 self.__tiles.add(tile)
                 if self.map[i][j] == "D":

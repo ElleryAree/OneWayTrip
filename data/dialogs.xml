@@ -1,54 +1,120 @@
 <?xml version="1.0"?>
 <data>
-    <char name="kurosu" display_name="Kurosu, Ph.D.">
+    <char name="kurosu" display_name="Robot contoroller">
         <phrase id="0">
-            <text>Who the Hell are you?</text>
+            <text>You will be...</text>
+            <text>..destroyed!!!</text>
             <answer next_id="1">
-                <text>Hello</text>
-            </answer>
-            <answer next_id="2">
-                <text>Fuck you</text>
-            </answer>
-            <answer next_id="3" required="2">
-                <text>What's this?</text>
+                <text>Sorry, what?</text>
             </answer>
         </phrase>
         <phrase id="1">
-            <text>Have a nice day, bye</text>
+            <text>Pardon moi.</text>
+            <text>So, can I help you?</text>
+            <answer next_id="2">
+                <text>Can I get to the rocket?</text>
+            </answer>
         </phrase>
         <phrase id="2">
-            <text>You too, bye</text>
+            <text>Only if you are noble!</text>
+            <answer next_id="3" required="4">
+                <text>Here is the proof!</text>
+            </answer>
         </phrase>
         <phrase id="3">
-            <text>Blood.</text>
-            <text>Bring me one of those thing</text>
-            <text>on the floor and I'll give you</text>
-            <text>lot's of money.</text>
+            <text>Good.</text>
+            <text>Come on then, get on board</text>
         </phrase>
     </char>
-    <char name="miruru" display_name="Miruru">
+    <char name="suka" display_name="Mad doctor">
         <phrase id="0">
-            <text>What you want?</text>
+            <text>Hello?</text>
             <answer next_id="1">
-                <text>What should I do?</text>
-            </answer>
-            <answer next_id="2">
-                <text>Where's Kurosu?</text>
-            </answer>
-            <answer next_id="3" required="2">
-                <text>What's this?</text>
+                <text>How can I prove that I am noble?</text>
             </answer>
         </phrase>
         <phrase id="1">
-            <text>Collect those things on the floor.</text>
-            <text>Get 3 and return to me.</text>
-            <text>I will show you how to get out.</text>
+            <text>Interesting...</text>
+            <text>Well, if you pay me 5 credits...</text>
+            <text>Or, I don't know, you can find a ficus?</text>
+            <answer next_id="2" required="10" count="5">
+                <text>Is this enoght?</text>
+            </answer>
+            <answer next_id="2" required="3">
+                <text>This is your ficus?</text>
+            </answer>
+        </phrase>
+
+        <phrase id="2" item="20">
+            <text>Ok.</text>
+            <text>Now I need noble blood,</text>
+            <answer next_id="3" required="23">
+                <text>Isn't it the best body ever?</text>
+            </answer>
+        </phrase>
+        <phrase id="3" item="20">
+            <text>and noble body.</text>
+            <answer next_id="4" required="21">
+                <text>Here's blood. No, don't drink it!</text>
+            </answer>
+        </phrase>
+        <phrase id="4" item="20">
+            <text>Now I can take it and</text>
+            <text>fly away myself</text>
+            <answer next_id="4" required="21">
+                <text>Here's blood. No, don't drink it!</text>
+            </answer>
+        </phrase>
+    </char>
+    <char name="kaito" display_name="sir Kai">
+        <phrase id="0">
+            <text>What's up?</text>
+            <answer next_id="1">
+                <text>I need your blood, can I kill you?</text>
+            </answer>
+        </phrase>
+        <phrase id="1" item="21">
+            <text>Well, no of course.</text>
+            <text>But you can take some of my blood</text>
+            <text>without violence.</text>
+        </phrase>
+    </char>
+    <char name="miruru" display_name="Noble zombie">
+        <phrase id="0">
+            <text>Eeeehhhh?</text>
+            <answer next_id="1">
+                <text>I need your body, can I take it?</text>
+            </answer>
+        </phrase>
+        <phrase id="1">
+            <text>Aaarrrggghhh?</text>
+            <answer next_id="2">
+                <text>You see, I want too leave this place</text>
+            </answer>
         </phrase>
         <phrase id="2">
-            <text>Hi is in the "Items" shop.</text>
+            <text>Aaauuummmffff?</text>
+            <answer next_id="3">
+                <text>Your body to became noble myself</text>
+            </answer>
         </phrase>
-        <phrase id="3" item="3" cost="10">
-            <text>Holly shit!</text>
+        <phrase id="3">
+            <text>Uuuurrrggghhhh!</text>
+            <answer next_id="5">
+                <text>I can take it with force!</text>
+            </answer>
+            <answer next_id="6">
+                <text>I'll take you with me!</text>
+            </answer>
+        </phrase>
+        <phrase id="5" item="24" cost="-10">
+            <text>Garurururu!!</text>
+            <answer next_id="3">
+                <text>Oh, you're too strong.. :(</text>
+            </answer>
+        </phrase>
+        <phrase id="6" item="23">
+            <text>ahhh...</text>
         </phrase>
     </char>
 </data>

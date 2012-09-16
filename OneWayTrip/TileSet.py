@@ -1,5 +1,6 @@
 import pygame
 from OneWayTrip.Utils import load_tile_table, load_image
+from random import Random
 
 __author__ = 'elleryaree'
 
@@ -36,21 +37,8 @@ class DarkWorldTileSet(BasicTileSet):
         self.tile_height = 32
         self.tiles = load_tile_table("scr4scifi.jpeg", self.tile_width, self.tile_height)
 
-    def get_tile(self, i, j, set):
-        key_up, key_down, key_left, key_right = self._getKeyAndSurroundings(set, i, j)
-        key = set[i][j]
-
-        if self._floor(key):
-            tile = self.tiles[4][10]
-        elif key == "D":
-            tile = self.tiles[11][6]
-        else:
-            if key_up == "W":
-                tile = self.tiles[3][5]
-            else:
-                tile = self.tiles[3][4]
-
-        return tile
+    def get_tile(self, i, j):
+        return self.tiles[j][i]
 
 class LightWorldTileSet(BasicTileSet):
     def __init__(self):
@@ -58,8 +46,28 @@ class LightWorldTileSet(BasicTileSet):
         self.tile_height = 32
         self.tiles = load_tile_table("scr3scifi.jpeg", self.tile_width, self.tile_height)
 
-    def get_tile(self, i, j, set):
+    def get_tile(self, i, j):
         return self.tiles[j][i]
+
+class GreenWorldTileSet(BasicTileSet):
+    def __init__(self):
+        self.tile_width = 32
+        self.tile_height = 32
+        self.tiles = load_tile_table("scr2scifi.jpeg", self.tile_width, self.tile_height)
+
+    def get_tile(self, i, j):
+        return self.tiles[j][i]
+
+class RandomTileSet(BasicTileSet):
+    def __init__(self):
+        self.tile_width = 32
+        self.tile_height = 32
+        self.tiles = load_tile_table("AbyssTileA5.png", self.tile_width, self.tile_height)
+
+    def get_tile(self):
+        random = Random()
+
+        return self.tiles[int(random.random() * len(self.tiles))][int(random.random() * len(self.tiles[0]))]
 
 class ItemsTileSet(BasicTileSet):
     def get_tile(self, item):

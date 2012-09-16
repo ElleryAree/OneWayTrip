@@ -35,6 +35,9 @@ class TalkParser(object):
                     required = answer_xml.get("required")
                     if required:
                         answer.required = int(required)
+                    count = answer_xml.get("count")
+                    if count:
+                        answer.count = int(count)
                     answers.append(answer)
 
         return chars
@@ -52,7 +55,7 @@ class Phrase:
         self.answers = answers
 
         self.item = None
-        self.cost = None
+        self.cost = 2
 
 class Answer:
     def __init__(self, next_id, text):
@@ -60,3 +63,4 @@ class Answer:
         self.text = text
 
         self.required = None
+        self.count = None

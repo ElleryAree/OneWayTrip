@@ -3,8 +3,8 @@ Your Game Title
 
 Entry in PyWeek #12  <http://www.pyweek.org/12/>
 URL: http://pyweek.org/e/OneWayTrip
-Team: YOUR TEAM NAME (leave the "Team: bit")
-Members: YOUR TEAM MEMBERS (leave the "Members: bit")
+Team: no team :( (leave the "Team: bit")
+Members: ElleryAree (leave the "Members: bit")
 License: see LICENSE.txt
 
 
@@ -25,20 +25,21 @@ How to Play the Game
 
 Move the cursor around the screen with the mouse.
 
-Press the left mouse button to fire the ducks.
+Press the left mouse button to go to the point, take things and speak people
+
+Press any key to exit
 
 
 Development notes 
 -----------------
 
+A vital point: there is no way to complete the game: this is by design, otherwise it will not be a "one way trip"
+
+Dependancies: There should be pygame installed…
+
 Creating a source distribution with::
 
    python setup.py sdist
-
-You may also generate Windows executables and OS X applications::
-
-   python setup.py py2exe
-   python setup.py py2app
 
 Upload files to PyWeek with::
 

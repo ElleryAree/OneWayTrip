@@ -15,7 +15,6 @@ class MainFrame(object):
         #        self.pointer_point_group = pygame.sprite.GroupSingle(self.pointerPoint)
 
         self.menu_list = {"World": WorldFrame(self, frame_size, self.pointerPoint, self.pointer),
-                          "Map": MapFrame(frame_size, self.pointerPoint, self.pointer),
                           "Tree": TreeFrame(frame_size, self.pointerPoint, self.pointer),
                           "Score": None, "Days_left": None}
         self.selected = "World"
@@ -125,13 +124,12 @@ class MenuItem(pygame.sprite.Sprite):
         self.font = font
 
     def update(self):
+        self.image = pygame.Surface((self.rect.width, self.rect.height))
         self.image.fill((0, 0, 0))
         if self.selected:
-            self.image = self.image_selected
-            self.rect = self.rect_selected
+            self.image.blit(self.image_selected, (0, 0))
         else:
-            self.image = self.image_simple
-            self.rect = self.rect_simple
+            self.image.blit(self.image_simple, (0, 0))
 
         if self.name == "Score":
             text_value = "%s" % self.main.score
