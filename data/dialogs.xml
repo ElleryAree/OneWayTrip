@@ -45,23 +45,17 @@
             </answer>
         </phrase>
 
-        <phrase id="2" item="20">
+        <phrase id="2" item="40">
             <text>Ok.</text>
             <text>Now I need noble blood,</text>
-            <answer next_id="3" required="23">
+            <answer next_id="3" required="21">
                 <text>Isn't it the best body ever?</text>
             </answer>
         </phrase>
-        <phrase id="3" item="20">
-            <text>and noble body.</text>
-            <answer next_id="4" required="21">
-                <text>Here's blood. No, don't drink it!</text>
-            </answer>
-        </phrase>
-        <phrase id="4" item="20">
+        <phrase id="3" item="41">
             <text>Now I can take it and</text>
             <text>fly away myself</text>
-            <answer next_id="4" required="21">
+            <answer next_id="4" required="23">
                 <text>Here's blood. No, don't drink it!</text>
             </answer>
         </phrase>

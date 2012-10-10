@@ -14,12 +14,12 @@ def main():
     screen = pygame.display.set_mode((564, 600))
     pygame.mouse.set_visible(0)
 
-    sound = load_sound("Theme.ogg")
+    sound = load_sound("Theme-2.ogg")
     sound.play()
 
     pygame.display.set_caption('Rocket escape')
-#    image, rect = load_image("invader_1.jpeg", -1)
-#    pygame.display.set_icon(image)
+    image, rect = load_image("invader_1.jpeg", -1)
+    pygame.display.set_icon(image)
 
     mainFrame = MainFrame(screen)
     clock = pygame.time.Clock()

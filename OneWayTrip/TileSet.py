@@ -90,6 +90,8 @@ class CharacterTileSet(object):
             y = 0
 
         x = hero_position[3]
+        if x >= 2:
+            x = 0
 
         tile = self.tiles[x][y]
 
